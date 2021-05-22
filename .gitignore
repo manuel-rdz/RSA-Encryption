@@ -5,6 +5,7 @@ __pycache__/
 
 # text files
 *.txt
+*.swp
 
 # C extensions
 *.so
