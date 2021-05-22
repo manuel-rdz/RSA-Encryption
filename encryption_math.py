@@ -1,5 +1,17 @@
 import random
 
+class EncDec:
+    @staticmethod
+    def encode(text):
+        bytes = text.encode("utf-8")
+        return int.from_bytes(bytes, byteorder="big")
+
+    @staticmethod
+    def decode(value):
+        bytes = value.to_bytes(((value.bit_length() + 7) // 8), byteorder="big")
+        return bytes.decode("utf-8")
+
+
 def binary_exponentiation(n, p):
     ans = 1
     b = 1
