@@ -14,7 +14,6 @@ def main(message, path, output_path=''):
         try:
             message_int = em.EncDec.decode(decrypted_message)
         except:
-            print('decoder::main::em.EncDec.decode')
             return
 
         file_decrypted = open(output_path, 'w+')

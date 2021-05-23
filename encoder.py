@@ -12,7 +12,6 @@ def main(message, path, output_path=''):
         try:
             message_int = em.EncDec.encode(message)
         except:
-            print('encoder::main::em.EncDec.encode')
             return
 
         encrypted_message = em.modular_exponentiation(message_int, int(public_key[0]), int(public_key[1]))
