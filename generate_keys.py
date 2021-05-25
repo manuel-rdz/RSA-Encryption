@@ -28,7 +28,7 @@ def main(bits, output_path=''):
     phi = (p-1)*(q-1)
 
     # find value of e as a non-trivial coprime of phi(n)
-    e = em.get_coprime(phi)
+    e = em.get_coprime(phi, min(p-1, q-1, 100000))
 
     # find the multiplicative inverse of e (mod phi(n))
     # solving the equation x*e congr. 1 (mod phi(n))

@@ -22,7 +22,7 @@ messages_szs = [1, 10, 20, 50, 70, 100, 120, 150]
 path = 'benchmarks/'
 
 # number of times the benchmark is going to run
-repeat = 10
+repeat = 20
 
 # clean the benchmarks folder to start a new run
 def clean_benchmarks_folder(path):
@@ -46,9 +46,9 @@ def plot_keys_chart(keys_times):
     plt.bar(X_axis, keys_times, 0.8)
     
     plt.xticks(X_axis, X)
-    plt.xlabel("Prime used size in bits")
+    plt.xlabel("Primes size in bits")
     plt.ylabel("Avg time taken (s)")
-    plt.title("Average time to generate a pair of keys of n bits")
+    plt.title("Average time of " + str(repeat) + " runs to generate a pair of keys with n bits size")
     plt.legend()
     plt.show()
 
@@ -80,7 +80,7 @@ def plot_charts(keys, encrypt, decrypt):
         plt.xticks(X_axis, X)
         plt.xlabel("bits used for the prime number")
         plt.ylabel("Time taken (s)")
-        plt.title("Average time to encrypt and decrypt message of size " + str(v))
+        plt.title("Average time of " + str(repeat)+" runs to encrypt and decrypt a message of length " + str(v))
         plt.legend()
         plt.show()
 
@@ -101,7 +101,6 @@ if __name__ == '__main__':
         for bits in bits_szs:
             encrypt_times = []
             decrypt_times = []
-            total_times = []
 
             # benchmark the time taken to generate a pair of keys of size 'bits'
             started = time.time()
@@ -144,11 +143,11 @@ if __name__ == '__main__':
                         decrypted_message = decrypted_file.read()
 
                         if original_message != decrypted_message:
-                            total_times[-1] = encrypt_times[-1] = decrypt_times[-1] = 0
+                            encrypt_times[-1] = decrypt_times[-1] = 0
                     else:
-                        total_times[-1] = encrypt_times[-1] = decrypt_times[-1] = 0
+                        encrypt_times[-1] = decrypt_times[-1] = 0
                 else:
-                    total_times[-1] = encrypt_times[-1] = decrypt_times[-1] = 0
+                    encrypt_times[-1] = decrypt_times[-1] = 0
             
             # save the encryption and decryption times for this pair of keys
             avg_encrypt_times[bits] = np.add(avg_encrypt_times.setdefault(bits, np.zeros(len(encrypt_times))), encrypt_times)
