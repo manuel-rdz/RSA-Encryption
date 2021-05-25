@@ -26,8 +26,11 @@ repeat = 20
 
 # clean the benchmarks folder to start a new run
 def clean_benchmarks_folder(path):
-    shutil.rmtree(path)
-    os.makedirs(path)
+    if os.path.exists(path):
+        shutil.rmtree(path)
+        os.makedirs(path)
+    else:
+        os.mkdir(path)
 
 # generates random message files with different lengths to benchark the encryption/decryption process
 def generate_message_files(path):
@@ -112,7 +115,7 @@ if __name__ == '__main__':
             # for each message size on the messages sizes array
             for message_size in messages_szs:
 
-                # benchmark the time to encrypt a message of lenght 'message_size'
+                # benchmark the time to encrypt a message of length 'message_size'
                 started = time.time()
                 e.main( path + 'message_' + str(message_size) + '.txt', 
                         path + 'public_key_' + str(bits) + '.txt', 
