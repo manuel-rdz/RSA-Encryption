@@ -1,6 +1,7 @@
 import random
 
-# class to encode string to integer number by using its byte representation
+# class to encode string to integer and viceversa
+# by using its byte representation
 class EncDec:
     @staticmethod
     def encode(text):
@@ -45,7 +46,7 @@ def witness(a, n):
         t += 1
         p *= 2
 
-    # if 2 does not divide (n - 1), then it is a witness??
+    # n = 2
     if t == 1:
         return True
     
@@ -54,7 +55,6 @@ def witness(a, n):
     p = p // 2
     u = (n - 1) // p
 
-    # from the book
     x_0 = modular_exponentiation(a, u, n)
     for i in range(1, t + 1):
         x_1 = (x_0 ** 2) % n
