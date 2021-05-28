@@ -46,7 +46,7 @@ def witness(a, n):
         t += 1
         p *= 2
 
-    # n = 2
+    # n is even
     if t == 1:
         return True
     

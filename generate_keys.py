@@ -31,7 +31,7 @@ def main(bits, output_path=''):
     e = em.get_coprime(phi, min(p-1, q-1, 100000))
 
     # find the multiplicative inverse of e (mod phi(n))
-    # solving the equation x*e congr. 1 (mod phi(n))
+    # solving the equation x*e = 1 (mod phi(n))
     d = em.modular_linear_equation_solver(e, 1, phi)
 
     # create files to store both keys
